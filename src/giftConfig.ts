@@ -31,7 +31,7 @@ export type MemoirPhoto = {
 
 export const giftConfig = {
   date: '2026.05.21',
-  passcode: '小瓶子',
+  passcode: '月月鸟',
   recipientName: '亲爱的小瓶子大大',
   senderName: '月月鸟',
   qrMessage: '我读完啦，来领521',

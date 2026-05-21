@@ -15,7 +15,7 @@ npm run dev
 
 主要内容都在 [src/giftConfig.ts](/Users/peng/Desktop/5.21/src/giftConfig.ts)：
 
-- `passcode`：进入暗号，现在是 `小瓶子`。
+- `passcode`：进入暗号，现在是 `月月鸟`。
 - `recipientName` / `senderName`：收信人和署名。
 - `letter`：信件正文。支持 `paragraph`、`quote`、`photo` 三种段落。
 - `qrMessage`：二维码里藏的暗号，现在是 `我读完啦，来领521`。
