@@ -422,7 +422,7 @@ function App() {
                 autoComplete="off"
               />
               <button type="submit">打开信封</button>
-              <p className="gate-hint">提示：她的专属昵称</p>
+              <p className="gate-hint">提示：他的专属昵称</p>
               {gateError && <p className="form-error">{gateError}</p>}
             </form>
           </section>
