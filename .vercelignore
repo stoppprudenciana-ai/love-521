@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-ssr
+screenshots
+.playwright-cli
+output
+*.log
+*.local
+.DS_Store

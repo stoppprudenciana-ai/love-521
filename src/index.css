@@ -1,0 +1,58 @@
+@import '@fontsource/noto-serif-sc/400.css';
+@import '@fontsource/noto-serif-sc/600.css';
+@import '@fontsource/ma-shan-zheng/400.css';
+@import '@fontsource/cormorant-garamond/400.css';
+@import '@fontsource/cormorant-garamond/600.css';
+@import 'lenis/dist/lenis.css';
+
+:root {
+  --body: 'Noto Serif SC', 'Songti SC', serif;
+  --script: 'Ma Shan Zheng', 'Noto Serif SC', cursive;
+  --display: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  color: #3b302b;
+  background: #fbf3e7;
+  font-family: var(--body);
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fbf3e7;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  color: #fffaf4;
+  background: #8f4a40;
+}
