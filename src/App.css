@@ -52,6 +52,13 @@
   pointer-events: none;
 }
 
+.flower-finale {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+}
+
 .corner-bouquet {
   position: fixed;
   width: 190px;
@@ -1227,6 +1234,10 @@
     margin: -64px auto 24px;
     box-sizing: border-box;
   }
+
+  .flower-finale {
+    z-index: 6;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1237,5 +1248,9 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .flower-finale {
+    display: none;
   }
 }

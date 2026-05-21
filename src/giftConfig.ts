@@ -38,8 +38,7 @@ export const giftConfig = {
   music: {
     src: '/audio/romantic-piano.mp3',
     title: 'Romantic Piano',
-    source:
-      '没有 mp3 也没关系，会先使用网页内置的柔和音乐盒；以后把 mp3 放到 public/audio/romantic-piano.mp3 会自动优先播放。',
+    source: '没有 mp3 也没关系，会先使用网页内置的柔和音乐盒。',
   },
   photos: [
     {

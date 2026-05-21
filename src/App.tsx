@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import Lenis from 'lenis'
 import { Music2, ScanLine, Volume2, VolumeX } from 'lucide-react'
 import './App.css'
+import { FlowerFinale } from './FlowerFinale'
 import { giftConfig, type LetterBlock, type MemoirPhoto } from './giftConfig'
 import { PetalCanvas } from './PetalCanvas'
 import { useAmbientMusic } from './useAmbientMusic'
@@ -126,6 +127,7 @@ function App() {
   const [letterOpened, setLetterOpened] = useState(false)
   const [letterContentVisible, setLetterContentVisible] = useState(false)
   const [giftRevealed, setGiftRevealed] = useState(false)
+  const [flowerFinaleActive, setFlowerFinaleActive] = useState(false)
   const appRef = useRef<HTMLDivElement | null>(null)
   const lenisRef = useRef<Lenis | null>(null)
   const envelopeRef = useRef<HTMLDivElement | null>(null)
@@ -306,6 +308,44 @@ function App() {
     )
   }, [giftRevealed])
 
+  useEffect(() => {
+    if (!letterContentVisible) {
+      setFlowerFinaleActive(false)
+      return
+    }
+
+    if (flowerFinaleActive) {
+      return
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) {
+      return
+    }
+
+    const revealNearBottom = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop
+      const viewportHeight = window.innerHeight
+      const pageHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)
+      const distanceToBottom = pageHeight - (scrollTop + viewportHeight)
+
+      if (distanceToBottom < Math.max(80, viewportHeight * 0.08)) {
+        setFlowerFinaleActive(true)
+        window.removeEventListener('scroll', revealNearBottom)
+        window.removeEventListener('resize', revealNearBottom)
+      }
+    }
+
+    revealNearBottom()
+    window.addEventListener('scroll', revealNearBottom, { passive: true })
+    window.addEventListener('resize', revealNearBottom)
+
+    return () => {
+      window.removeEventListener('scroll', revealNearBottom)
+      window.removeEventListener('resize', revealNearBottom)
+    }
+  }, [flowerFinaleActive, letterContentVisible])
+
   const unlock = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -344,6 +384,7 @@ function App() {
   return (
     <div className={`app-shell ${unlocked ? 'is-unlocked' : 'is-gated'}`} ref={appRef}>
       {unlocked && <PetalCanvas />}
+      {unlocked && <FlowerFinale active={flowerFinaleActive} />}
       {unlocked && (
         <>
           <div className="grain" aria-hidden="true" />
@@ -368,7 +409,7 @@ function App() {
             <p className="eyebrow">Une lettre pour toi</p>
             <h1 id="gate-title">一封只给你的信</h1>
             <p className="gate-copy">
-              有些话想慢慢给你看。输入那个只有你知道的称呼，信封就会打开。
+              有些话想慢慢给你看。输入那个只有你知道的对我的称呼，信封就会打开。
             </p>
             <form className="passcode-form" onSubmit={unlock}>
               <label htmlFor="passcode">暗号</label>
